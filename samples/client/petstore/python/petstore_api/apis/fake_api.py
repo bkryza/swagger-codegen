@@ -157,8 +157,8 @@ class FakeApi(object):
 
     def test_endpoint_parameters(self, number, double, pattern_without_delimiter, byte, **kwargs):
         """
-        Fake endpoint for testing various parameters 假端點 偽のエンドポイント 가짜 엔드 포인트 
-        Fake endpoint for testing various parameters 假端點 偽のエンドポイント 가짜 엔드 포인트 
+        Fake endpoint for testing various parameters\n\u5047\u7AEF\u9EDE\n\u507D\u306E\u30A8\u30F3\u30C9\u30DD\u30A4\u30F3\u30C8\n\uAC00\uC9DC \uC5D4\uB4DC \uD3EC\uC778\uD2B8\n
+        Fake endpoint for testing various parameters\n\u5047\u7AEF\u9EDE\n\u507D\u306E\u30A8\u30F3\u30C9\u30DD\u30A4\u30F3\u30C8\n\uAC00\uC9DC \uC5D4\uB4DC \uD3EC\uC778\uD2B8\n
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
@@ -196,8 +196,8 @@ class FakeApi(object):
 
     def test_endpoint_parameters_with_http_info(self, number, double, pattern_without_delimiter, byte, **kwargs):
         """
-        Fake endpoint for testing various parameters 假端點 偽のエンドポイント 가짜 엔드 포인트 
-        Fake endpoint for testing various parameters 假端點 偽のエンドポイント 가짜 엔드 포인트 
+        Fake endpoint for testing various parameters\n\u5047\u7AEF\u9EDE\n\u507D\u306E\u30A8\u30F3\u30C9\u30DD\u30A4\u30F3\u30C8\n\uAC00\uC9DC \uC5D4\uB4DC \uD3EC\uC778\uD2B8\n
+        Fake endpoint for testing various parameters\n\u5047\u7AEF\u9EDE\n\u507D\u306E\u30A8\u30F3\u30C9\u30DD\u30A4\u30F3\u30C8\n\uAC00\uC9DC \uC5D4\uB4DC \uD3EC\uC778\uD2B8\n
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
@@ -253,32 +253,6 @@ class FakeApi(object):
         if ('byte' not in params) or (params['byte'] is None):
             raise ValueError("Missing the required parameter `byte` when calling `test_endpoint_parameters`")
 
-        if 'number' in params and params['number'] > 543.2:
-            raise ValueError("Invalid value for parameter `number` when calling `test_endpoint_parameters`, must be a value less than or equal to  `543.2`")
-        if 'number' in params and params['number'] < 32.1:
-            raise ValueError("Invalid value for parameter `number` when calling `test_endpoint_parameters`, must be a value greater than or equal to `32.1`")
-        if 'double' in params and params['double'] > 123.4:
-            raise ValueError("Invalid value for parameter `double` when calling `test_endpoint_parameters`, must be a value less than or equal to  `123.4`")
-        if 'double' in params and params['double'] < 67.8:
-            raise ValueError("Invalid value for parameter `double` when calling `test_endpoint_parameters`, must be a value greater than or equal to `67.8`")
-        if 'pattern_without_delimiter' in params and not re.search('^[A-Z].*', params['pattern_without_delimiter']):
-            raise ValueError("Invalid value for parameter `pattern_without_delimiter` when calling `test_endpoint_parameters`, must conform to the pattern `/^[A-Z].*/`")
-        if 'integer' in params and params['integer'] > 100.0:
-            raise ValueError("Invalid value for parameter `integer` when calling `test_endpoint_parameters`, must be a value less than or equal to  `100.0`")
-        if 'integer' in params and params['integer'] < 10.0:
-            raise ValueError("Invalid value for parameter `integer` when calling `test_endpoint_parameters`, must be a value greater than or equal to `10.0`")
-        if 'int32' in params and params['int32'] > 200.0:
-            raise ValueError("Invalid value for parameter `int32` when calling `test_endpoint_parameters`, must be a value less than or equal to  `200.0`")
-        if 'int32' in params and params['int32'] < 20.0:
-            raise ValueError("Invalid value for parameter `int32` when calling `test_endpoint_parameters`, must be a value greater than or equal to `20.0`")
-        if 'float' in params and params['float'] > 987.6:
-            raise ValueError("Invalid value for parameter `float` when calling `test_endpoint_parameters`, must be a value less than or equal to  `987.6`")
-        if 'string' in params and not re.search('[a-z]', params['string'], flags=re.IGNORECASE):
-            raise ValueError("Invalid value for parameter `string` when calling `test_endpoint_parameters`, must conform to the pattern `/[a-z]/i`")
-        if 'password' in params and len(params['password']) > 64:
-            raise ValueError("Invalid value for parameter `password` when calling `test_endpoint_parameters`, length must be less than or equal to `64`")
-        if 'password' in params and len(params['password']) < 10:
-            raise ValueError("Invalid value for parameter `password` when calling `test_endpoint_parameters`, length must be greater than or equal to `10`")
         resource_path = '/fake'.replace('{format}', 'json')
         path_params = {}
 

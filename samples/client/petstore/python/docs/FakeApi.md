@@ -5,7 +5,7 @@ All URIs are relative to *http://petstore.swagger.io/v2*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**test_client_model**](FakeApi.md#test_client_model) | **PATCH** /fake | To test \&quot;client\&quot; model
-[**test_endpoint_parameters**](FakeApi.md#test_endpoint_parameters) | **POST** /fake | Fake endpoint for testing various parameters 假端點 偽のエンドポイント 가짜 엔드 포인트 
+[**test_endpoint_parameters**](FakeApi.md#test_endpoint_parameters) | **POST** /fake | Fake endpoint for testing various parameters\n\u5047\u7AEF\u9EDE\n\u507D\u306E\u30A8\u30F3\u30C9\u30DD\u30A4\u30F3\u30C8\n\uAC00\uC9DC \uC5D4\uB4DC \uD3EC\uC778\uD2B8\n
 [**test_enum_parameters**](FakeApi.md#test_enum_parameters) | **GET** /fake | To test enum parameters
 
 
@@ -58,9 +58,9 @@ No authorization required
 # **test_endpoint_parameters**
 > test_endpoint_parameters(number, double, pattern_without_delimiter, byte, integer=integer, int32=int32, int64=int64, float=float, string=string, binary=binary, date=date, date_time=date_time, password=password)
 
-Fake endpoint for testing various parameters 假端點 偽のエンドポイント 가짜 엔드 포인트 
+Fake endpoint for testing various parameters\n\u5047\u7AEF\u9EDE\n\u507D\u306E\u30A8\u30F3\u30C9\u30DD\u30A4\u30F3\u30C8\n\uAC00\uC9DC \uC5D4\uB4DC \uD3EC\uC778\uD2B8\n
 
-Fake endpoint for testing various parameters 假端點 偽のエンドポイント 가짜 엔드 포인트 
+Fake endpoint for testing various parameters\n\u5047\u7AEF\u9EDE\n\u507D\u306E\u30A8\u30F3\u30C9\u30DD\u30A4\u30F3\u30C8\n\uAC00\uC9DC \uC5D4\uB4DC \uD3EC\uC778\uD2B8\n
 
 ### Example 
 ```python
@@ -91,7 +91,7 @@ date_time = '2013-10-20T19:20:30+01:00' # datetime | None (optional)
 password = 'password_example' # str | None (optional)
 
 try: 
-    # Fake endpoint for testing various parameters 假端點 偽のエンドポイント 가짜 엔드 포인트 
+    # Fake endpoint for testing various parameters\n\u5047\u7AEF\u9EDE\n\u507D\u306E\u30A8\u30F3\u30C9\u30DD\u30A4\u30F3\u30C8\n\uAC00\uC9DC \uC5D4\uB4DC \uD3EC\uC778\uD2B8\n
     api_instance.test_endpoint_parameters(number, double, pattern_without_delimiter, byte, integer=integer, int32=int32, int64=int64, float=float, string=string, binary=binary, date=date, date_time=date_time, password=password)
 except ApiException as e:
     print("Exception when calling FakeApi->test_endpoint_parameters: %s\n" % e)

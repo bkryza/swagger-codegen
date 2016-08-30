@@ -61,12 +61,12 @@ class {{classname}}(object):
         """
 {{#isEnum}}
         allowed_values = [{{#allowableValues}}{{#values}}"{{{this}}}"{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}]
-{{#isArrayModel}} 
+{{#isListContainer}} 
         if not set({{{name}}}).issubset(set(allowed_values)):
-{{/isArrayModel}} 
-{{^isArrayModel}} 
+{{/isListContainer}} 
+{{^isListContainer}} 
         if {{{name}}} not in allowed_values:
-{{/isArrayModel}} 
+{{/isListContainer}} 
             raise ValueError(
                 "Invalid value for `{{{name}}}` ({0}), must be one of {1}"
                 .format({{{name}}}, allowed_values)

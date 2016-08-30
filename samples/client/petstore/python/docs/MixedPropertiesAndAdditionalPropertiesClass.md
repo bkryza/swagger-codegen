@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**uuid** | **str** |  | [optional] 
+**uuid** | [**UUID**](UUID.md) |  | [optional] 
 **date_time** | **datetime** |  | [optional] 
 **map** | [**dict(str, Animal)**](Animal.md) |  | [optional] 
 

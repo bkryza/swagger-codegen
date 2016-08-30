@@ -104,12 +104,6 @@ class EnumArrays(object):
         :param array_enum: The array_enum of this EnumArrays.
         :type: list[str]
         """
-        allowed_values = ["fish", "crab"]
-        if array_enum not in allowed_values:
-            raise ValueError(
-                "Invalid value for `array_enum` ({0}), must be one of {1}"
-                .format(array_enum, allowed_values)
-            )
 
         self._array_enum = array_enum
 

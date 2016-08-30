@@ -41,7 +41,6 @@ from .models.enum_class import EnumClass
 from .models.enum_test import EnumTest
 from .models.format_test import FormatTest
 from .models.has_only_read_only import HasOnlyReadOnly
-from .models.list import List
 from .models.map_test import MapTest
 from .models.mixed_properties_and_additional_properties_class import MixedPropertiesAndAdditionalPropertiesClass
 from .models.model_200_response import Model200Response

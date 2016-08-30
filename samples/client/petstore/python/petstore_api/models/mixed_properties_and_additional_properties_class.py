@@ -42,7 +42,7 @@ class MixedPropertiesAndAdditionalPropertiesClass(object):
                                   and the value is json key in definition.
         """
         self.swagger_types = {
-            'uuid': 'str',
+            'uuid': 'UUID',
             'date_time': 'datetime',
             'map': 'dict(str, Animal)'
         }
@@ -65,7 +65,7 @@ class MixedPropertiesAndAdditionalPropertiesClass(object):
 
 
         :return: The uuid of this MixedPropertiesAndAdditionalPropertiesClass.
-        :rtype: str
+        :rtype: UUID
         """
         return self._uuid
 
@@ -76,7 +76,7 @@ class MixedPropertiesAndAdditionalPropertiesClass(object):
 
 
         :param uuid: The uuid of this MixedPropertiesAndAdditionalPropertiesClass.
-        :type: str
+        :type: UUID
         """
 
         self._uuid = uuid

@@ -53,7 +53,7 @@ class FormatTest(object):
             'binary': 'str',
             'date': 'date',
             'date_time': 'datetime',
-            'uuid': 'str',
+            'uuid': 'UUID',
             'password': 'str'
         }
 
@@ -109,13 +109,6 @@ class FormatTest(object):
         :type: int
         """
 
-        if not integer:
-            raise ValueError("Invalid value for `integer`, must not be `None`")
-        if integer > 100.0:
-            raise ValueError("Invalid value for `integer`, must be a value less than or equal to `100.0`")
-        if integer < 10.0:
-            raise ValueError("Invalid value for `integer`, must be a value greater than or equal to `10.0`")
-
         self._integer = integer
 
     @property
@@ -138,13 +131,6 @@ class FormatTest(object):
         :param int32: The int32 of this FormatTest.
         :type: int
         """
-
-        if not int32:
-            raise ValueError("Invalid value for `int32`, must not be `None`")
-        if int32 > 200.0:
-            raise ValueError("Invalid value for `int32`, must be a value less than or equal to `200.0`")
-        if int32 < 20.0:
-            raise ValueError("Invalid value for `int32`, must be a value greater than or equal to `20.0`")
 
         self._int32 = int32
 
@@ -192,13 +178,6 @@ class FormatTest(object):
         :type: float
         """
 
-        if not number:
-            raise ValueError("Invalid value for `number`, must not be `None`")
-        if number > 543.2:
-            raise ValueError("Invalid value for `number`, must be a value less than or equal to `543.2`")
-        if number < 32.1:
-            raise ValueError("Invalid value for `number`, must be a value greater than or equal to `32.1`")
-
         self._number = number
 
     @property
@@ -221,13 +200,6 @@ class FormatTest(object):
         :param float: The float of this FormatTest.
         :type: float
         """
-
-        if not float:
-            raise ValueError("Invalid value for `float`, must not be `None`")
-        if float > 987.6:
-            raise ValueError("Invalid value for `float`, must be a value less than or equal to `987.6`")
-        if float < 54.3:
-            raise ValueError("Invalid value for `float`, must be a value greater than or equal to `54.3`")
 
         self._float = float
 
@@ -252,13 +224,6 @@ class FormatTest(object):
         :type: float
         """
 
-        if not double:
-            raise ValueError("Invalid value for `double`, must not be `None`")
-        if double > 123.4:
-            raise ValueError("Invalid value for `double`, must be a value less than or equal to `123.4`")
-        if double < 67.8:
-            raise ValueError("Invalid value for `double`, must be a value greater than or equal to `67.8`")
-
         self._double = double
 
     @property
@@ -281,11 +246,6 @@ class FormatTest(object):
         :param string: The string of this FormatTest.
         :type: str
         """
-
-        if not string:
-            raise ValueError("Invalid value for `string`, must not be `None`")
-        if not re.search('[a-z]', string, flags=re.IGNORECASE):
-            raise ValueError("Invalid value for `string`, must be a follow pattern or equal to `/[a-z]/i`")
 
         self._string = string
 
@@ -388,7 +348,7 @@ class FormatTest(object):
 
 
         :return: The uuid of this FormatTest.
-        :rtype: str
+        :rtype: UUID
         """
         return self._uuid
 
@@ -399,7 +359,7 @@ class FormatTest(object):
 
 
         :param uuid: The uuid of this FormatTest.
-        :type: str
+        :type: UUID
         """
 
         self._uuid = uuid
@@ -424,13 +384,6 @@ class FormatTest(object):
         :param password: The password of this FormatTest.
         :type: str
         """
-
-        if not password:
-            raise ValueError("Invalid value for `password`, must not be `None`")
-        if len(password) > 64:
-            raise ValueError("Invalid value for `password`, length must be less than `64`")
-        if len(password) < 10:
-            raise ValueError("Invalid value for `password`, length must be greater than or equal to `10`")
 
         self._password = password
 
