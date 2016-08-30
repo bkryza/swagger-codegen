@@ -61,16 +61,24 @@ class {{classname}}(object):
         """
 {{#isEnum}}
         allowed_values = [{{#allowableValues}}{{#values}}"{{{this}}}"{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}}]
-{{#isContainer}} 
-        if not set({{{name}}}).issubset(set(allowed_values)):
-{{/isContainer}} 
-{{^isContainer}} 
-        if {{{name}}} not in allowed_values:
-{{/isContainer}} 
-            raise ValueError(
-                "Invalid value for `{{{name}}}` ({0}), must be one of {1}"
-                .format({{{name}}}, allowed_values)
-            )
+        if type({{{name}}}) is list:
+            if not set({{{name}}}).issubset(set(allowed_values)):
+                raise ValueError(
+                    "Invalid value for `{{{name}}}` ({0}), must be a subset of {1}"
+                    .format({{{name}}}, allowed_values)
+                )
+        elif type({{{name}}}) is set:
+            if not {{{name}}}.issubset(set(allowed_values)):
+                raise ValueError(
+                    "Invalid value for `{{{name}}}` ({0}), must be a subset of {1}"
+                    .format({{{name}}}, allowed_values)
+                )
+        else:
+            if {{{name}}} not in allowed_values:
+                raise ValueError(
+                    "Invalid value for `{{{name}}}` ({0}), must be one of {1}"
+                    .format({{{name}}}, allowed_values)
+                )
 {{/isEnum}}
 {{^isEnum}}
 {{#hasValidation}}
