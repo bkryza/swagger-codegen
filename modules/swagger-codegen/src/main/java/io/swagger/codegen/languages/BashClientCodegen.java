@@ -249,6 +249,8 @@ public class BashClientCodegen extends DefaultCodegen implements CodegenConfig {
                "zsh-completion.mustache", "", "_"+scriptName));
       supportingFiles.add(new SupportingFile(
                "README.mustache", "", "README.md"));
+      supportingFiles.add(new SupportingFile(
+               "Dockerfile.mustache", "", "Dockerfile"));
   }
 
   public void setCurlOptions(String curlOptions) {
@@ -445,14 +447,19 @@ public class BashClientCodegen extends DefaultCodegen implements CodegenConfig {
       }
 
       /**
+       * Trim the input text always.
+       */
+      String result = input.trim();
+
+      /**
        * remove standalone '\'
        *
        * replace " with \"
        * outter unescape to retain the original multi-byte characters
        */
-      String result = escapeUnsafeCharacters(
+       result = escapeUnsafeCharacters(
         StringEscapeUtils.unescapeJava(
-          StringEscapeUtils.escapeJava(input).replace("\\/", "/"))
+          StringEscapeUtils.escapeJava(result).replace("\\/", "/"))
                      .replace("\\", "\\\\")
                      .replace("\"", "\\\""));
 
