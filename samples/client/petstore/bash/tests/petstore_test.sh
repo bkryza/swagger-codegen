@@ -46,8 +46,11 @@ export PETSTORE_HOST="http://petstore.swagger.io"
     [[ ! "$output" =~ "-H \"api_key:" ]]
 }
 
-
-
+@test "findPetsByStatus has default cURL parameters" {
+    run bash \
+        -c "bash $PETSTORE_CLI --host http://petstore.swagger.io findPetsByStatus status=s1 --dry-run"
+    [[ ! "$output" =~ " -Ss " ]]
+}
 
 @test "findPetsByStatus too few values" {
     run bash \
@@ -97,6 +100,3 @@ export PETSTORE_HOST="http://petstore.swagger.io"
             bash $PETSTORE_CLI -ct json -ac xml addPet -"
     [[ "$output" =~ "<id>37567</id>" ]]
 }
-
-
-
