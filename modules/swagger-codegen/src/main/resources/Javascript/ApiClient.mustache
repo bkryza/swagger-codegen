@@ -515,8 +515,18 @@
           // If the model is polymorphic, make sure to use
           // proper model subclass based on Swagger 'discriminator' field
           if(type.__swaggerDiscriminator() !== undefined) {
-            var polymorphicType = require("./model/"+data[type.__swaggerDiscriminator()]);
-            return polymorphicType.constructFromObject(data);
+            var polymorphicType;
+{{#models}}{{#model}}{{#parentSchema}}
+            if('{{name}}'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
+              polymorphicType = require("./model/{{name}}");
+            }
+{{/parentSchema}}{{/model}}{{/models}}
+            if(polymorphicType) {
+              return polymorphicType.constructFromObject(data);
+            }
+            else {
+              return null;
+            }
           }
           // for non-polymorphic models use declared type directly
           else {
