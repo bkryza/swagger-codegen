@@ -512,8 +512,16 @@
           // generic object, return directly
           return data;
         } else if (typeof type === 'function') {
-          // for model type like: User
-          return type.constructFromObject(data);
+          // If the model is polymorphic, make sure to use
+          // proper model subclass based on Swagger 'discriminator' field
+          if(type.__swaggerDiscriminator() !== undefined) {
+            var polymorphicType = require("./model/"+data[type.__swaggerDiscriminator()]);
+            return polymorphicType.constructFromObject(data);
+          }
+          // for non-polymorphic models use declared type directly
+          else {
+            return type.constructFromObject(data);
+          }
         } else if (Array.isArray(type)) {
           // for array type like: ['String']
           var itemType = type[0];
