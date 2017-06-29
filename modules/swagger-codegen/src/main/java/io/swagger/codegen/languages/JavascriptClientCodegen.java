@@ -313,7 +313,7 @@ public class JavascriptClientCodegen extends DefaultCodegen implements CodegenCo
     }
 
     @Override
-    public String escapeReservedWord(String name) {           
+    public String escapeReservedWord(String name) {
         if(this.reservedWordsMappings().containsKey(name)) {
             return this.reservedWordsMappings().get(name);
         }
@@ -700,7 +700,7 @@ public class JavascriptClientCodegen extends DefaultCodegen implements CodegenCo
         op.returnType = normalizeType(op.returnType);
       }
 
-      //path is an unescaped variable in the mustache template api.mustache line 82 '<&path>'    
+      //path is an unescaped variable in the mustache template api.mustache line 82 '<&path>'
       op.path = sanitizePath(op.path);
 
       // Set vendor-extension to be used in template:
@@ -735,6 +735,8 @@ public class JavascriptClientCodegen extends DefaultCodegen implements CodegenCo
     public CodegenModel fromModel(String name, Model model, Map<String, Model> allDefinitions) {
         CodegenModel codegenModel = super.fromModel(name, model, allDefinitions);
 
+        codegenModel.vendorExtensions.put("x-fileName", toModelFilename(name));
+
         if (allDefinitions != null && codegenModel != null && codegenModel.parent != null && codegenModel.hasEnums) {
             final Model parentModel = allDefinitions.get(codegenModel.parentSchema);
             final CodegenModel parentCodegenModel = super.fromModel(codegenModel.parent, parentModel, allDefinitions);
@@ -761,7 +763,7 @@ public class JavascriptClientCodegen extends DefaultCodegen implements CodegenCo
         //prefer replace a ', instead of a fuLL URL encode for readability
         return p.replaceAll("'", "%27");
     }
-    
+
     private String trimBrackets(String s) {
         if (s != null) {
             int beginIdx = s.charAt(0) == '[' ? 1 : 0;

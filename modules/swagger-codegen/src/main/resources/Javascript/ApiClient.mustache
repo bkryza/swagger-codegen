@@ -518,7 +518,7 @@
             var polymorphicType;
 {{#models}}{{#model}}{{#parentSchema}}
             if('{{name}}'.toLowerCase() === data[type.__swaggerDiscriminator()].toLowerCase()) {
-              polymorphicType = require("./model/{{name}}");
+              polymorphicType = require("./model/{{#vendorExtensions.x-fileName}}{{vendorExtensions.x-fileName}}{{/vendorExtensions.x-fileName}}");
             }
 {{/parentSchema}}{{/model}}{{/models}}
             if(polymorphicType) {
