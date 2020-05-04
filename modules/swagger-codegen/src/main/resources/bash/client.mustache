@@ -237,22 +237,29 @@ lookup_mime_type() {
 ##############################################################################
 header_arguments_to_curl() {
     local headers_curl=""
+    local api_key_headers=()
     local api_key_header=""
     local api_key_header_in_cli=""
+    local api_key_header_added=""
 {{#hasAuthMethods}}
 {{#authMethods}}
 {{#isApiKey}}
 {{#isKeyInHeader}}
-    api_key_header="{{keyParamName}}"
+    api_key_headers+=( "{{keyParamName}}" )
+    if [[ -z "${api_key_header}" ]]; then
+        api_key_header="{{keyParamName}}"
+    fi
 {{/isKeyInHeader}}
 {{/isApiKey}}
 {{/authMethods}}
 {{/hasAuthMethods}}
 
     for key in "${!header_arguments[@]}"; do
-        headers_curl+="-H \"${key}: ${header_arguments[${key}]}\" "
-        if [[ "${key}XX" == "${api_key_header}XX" ]]; then
+        headers_curl+=" -H \"${key}: ${header_arguments[${key}]}\" "
+        if [[ -z "$api_key_header_added" && " ${api_key_headers[@]} " =~ " ${key} " ]]; then
             api_key_header_in_cli="YES"
+            api_key_header_added="YES"
+            api_key_header="${key}"
         fi
     done
 {{#hasAuthMethods}}
@@ -260,11 +267,13 @@ header_arguments_to_curl() {
 {{#isApiKey}}
 {{#isKeyInHeader}}
     #
-    # If the api_key was not provided in the header, try one from the
-    # environment variable
+    # If the api_key was not provided on the command line, try one from the
+    # environment variable and use the first header from the first auth
+    # method of type api_key
     #
-    if [[ -z $api_key_header_in_cli && -n $apikey_auth_credential ]]; then
-        headers_curl+="-H \"${api_key_header}: ${apikey_auth_credential}\""
+    if [[ -z "$api_key_header_added" && -z "$api_key_header_in_cli" && -n" $apikey_auth_credential" ]]; then
+        headers_curl+=" -H \"${api_key_header}: ${apikey_auth_credential}\""
+	api_key_header_added="YES"
     fi
 {{/isKeyInHeader}}
 {{/isApiKey}}
@@ -1028,7 +1037,7 @@ case $key in
         # If the header key is the same as the api_key expected by API in the
         # header, override the ${apikey_auth_credential} variable
         #
-        if [[ $header_name == "{{keyParamName}}" ]]; then
+        if [[ -z "$apikey_auth_credential" && $header_name == "{{keyParamName}}" ]]; then
             apikey_auth_credential=$header_value
         fi
 {{/isKeyInHeader}}
