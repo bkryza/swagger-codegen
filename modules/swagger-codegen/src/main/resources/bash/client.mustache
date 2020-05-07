@@ -271,7 +271,7 @@ header_arguments_to_curl() {
     # environment variable and use the first header from the first auth
     # method of type api_key
     #
-    if [[ -z "$api_key_header_added" && -z "$api_key_header_in_cli" && -n" $apikey_auth_credential" ]]; then
+    if [[ -z "$api_key_header_added" && -z "$api_key_header_in_cli" && -n "$apikey_auth_credential" ]]; then
         headers_curl+=" -H \"${api_key_header}: ${apikey_auth_credential}\""
 	api_key_header_added="YES"
     fi
